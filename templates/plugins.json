@@ -1,0 +1,9 @@
+{
+  "modules": [
+    {
+      "name": "javascript:api",
+      "path": "javacript_api",
+      "file_configuration": "configuration.json"
+    }
+  ]
+}
