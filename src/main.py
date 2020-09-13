@@ -4,8 +4,10 @@ Module Control For Init Project
 # Libraries
 import os
 from typing import Callable
+
 from src.config import configuration
 from src.utils import utils
+from src.meta import get_entity
 
 fn_read_json_file = utils.get('inputs').get('read_json_file')
 
@@ -35,8 +37,13 @@ def read_template(template_path: str) -> Callable:
     return read_module
 
 
-def load():
+def load(entity: str) -> None:
     """Load a Project"""
+    entity = os.path.join(
+        configuration.get('base').get('base_path'),
+        entity
+    )
+    print('Entity - ', entity)
     print('- Configuration Routes -')
     template_configuration = configuration.get('templates').get(
         'template_configuration'
@@ -52,4 +59,6 @@ def load():
         )
     )
     print('Plugin Configuration - ', plugin_configuration)
+    entity = get_entity(entity)
+    print('entity - ', entity)
     print('- Configuration Routes -')

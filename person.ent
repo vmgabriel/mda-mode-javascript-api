@@ -1,0 +1,5 @@
+defmodule User do
+  name -> string 10
+  last_name -> string 10
+  email -> string 10
+end

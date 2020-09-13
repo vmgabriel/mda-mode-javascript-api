@@ -1,0 +1,31 @@
+/*
+  Entity DSL grammar.
+*/
+
+EntityModel:
+    entities+=Entity        // Each model has one or more entities.
+;
+
+Entity:
+    'defmodule' name=ID 'do'
+      properties+=Property // Each entity has one or more properties.
+    'end'
+;
+
+Property:
+    name=ID '->' type=[Type] (length=INT)?
+;
+
+// Type can be SimpleType or Entity
+Type:
+    SimpleType | Entity
+;
+
+SimpleType:
+    'type' name=ID
+;
+
+// Special rule for comments. Comments start with //
+Comment:
+    /\/\/.*$/
+;
