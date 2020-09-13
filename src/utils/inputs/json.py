@@ -11,6 +11,9 @@ def read_json_file(name_file: str) -> dict:
     @params name_file: str -> Data file
     @return: dict -> the Data of File
     """
+    if not name_file:
+        return {}
+
     try:
         file = open(name_file, 'rt')
         data_file = json.load(file)

@@ -2,7 +2,7 @@
   "modules": [
     {
       "name": "javascript:api",
-      "path": "javacript_api",
+      "path": "javascript_api",
       "file_configuration": "configuration.json"
     }
   ]
