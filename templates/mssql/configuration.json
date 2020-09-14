@@ -1,0 +1,23 @@
+{
+  "name_plugin": "Microsoft Sql Server",
+  "version": "0.0.1",
+  "description": "A Configuration for SQL",
+  "output_path": "ddl_mssql",
+  "extension": "sql",
+  "type_definition": {
+    "string": "VARCHAR",
+    "number": "INT",
+    "datetime": "DATETIME",
+    "time": "TIME",
+    "date": "DATE",
+    "float": "FLOAT",
+    "boolean": "BIT"
+  },
+  "templates": [
+    {
+      "name": "ddl",
+      "description": "for build the ddl",
+      "file": "ddl.template"
+    }
+  ]
+}

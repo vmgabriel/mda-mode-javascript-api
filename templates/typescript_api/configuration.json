@@ -18,8 +18,7 @@
       "name": "interface",
       "description": "for build the interface",
       "file": "interface.template",
-      "output_path": "interfaces",
-      "lstrip_blocks": false
+      "output_path": "interfaces"
     }
   ]
 }

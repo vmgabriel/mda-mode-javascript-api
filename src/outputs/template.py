@@ -18,8 +18,6 @@ def generate_template_with_entity(
     """Generate Template with Entity Defined"""
     def generate_with_template(template_def: dict) -> None:
         """Generate With Template"""
-        lstrip = 'lstrip_blocks' in template_def \
-            and template_def.get('lstrip_blocks')
         jinja_env = jinja2.Environment(
             loader=jinja2.FileSystemLoader(template_path),
             trim_blocks=True,

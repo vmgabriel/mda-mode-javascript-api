@@ -4,6 +4,11 @@
       "name": "Typescript:api",
       "path": "typescript_api",
       "file_configuration": "configuration.json"
+    },
+    {
+      "name": "mssql:sql",
+      "path": "mssql",
+      "file_configuration": "configuration.json"
     }
   ]
 }
