@@ -1,8 +1,8 @@
 {
   "modules": [
     {
-      "name": "javascript:api",
-      "path": "javascript_api",
+      "name": "Typescript:api",
+      "path": "typescript_api",
       "file_configuration": "configuration.json"
     }
   ]

@@ -1,0 +1,25 @@
+{
+  "name_plugin": "Typescript MDA API",
+  "version": "0.0.1",
+  "description": "A Configuration for Typescript API",
+  "output_path": "typescript_api",
+  "extension": "ts",
+  "type_definition": {
+    "string": "string",
+    "number": "number",
+    "datetime": "Date",
+    "time": "Date",
+    "date": "Date",
+    "float": "float",
+    "boolean": "boolean"
+  },
+  "templates": [
+    {
+      "name": "interface",
+      "description": "for build the interface",
+      "file": "interface.template",
+      "output_path": "interfaces",
+      "lstrip_blocks": false
+    }
+  ]
+}

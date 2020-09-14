@@ -1,5 +1,13 @@
-defmodule User do
-  name -> string 10
-  last_name -> string 10
-  email -> string 10
+// Base to Session
+defmodule Session : se do
+  username -> string : False > 100 =
+  password -> string : False > 200 =
+end
+
+// A User for Session
+defmodule User : use do
+  name -> string : True > 100 =
+  last_name -> string : True > 200 =
+  email -> string : True > 300 =
+  session -> Session : False > 10 =
 end

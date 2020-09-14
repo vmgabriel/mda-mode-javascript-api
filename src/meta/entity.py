@@ -8,6 +8,7 @@ from textx import metamodel_from_file
 
 this_folder = dirname(__file__)
 
+
 class SimpleType(object):
     """
     Simple Type Class Definition
@@ -20,12 +21,7 @@ class SimpleType(object):
         return self.name
 
 
-def get_entity_mm(file_name: str, debug=False):
-    """
-    Get Entity Meta Model
-    """
-
-    type_builtins = {
+type_builtins = {
         'number': SimpleType(None, 'integer'),
         'string': SimpleType(None, 'string'),
         'float': SimpleType(None, 'string'),
@@ -35,6 +31,11 @@ def get_entity_mm(file_name: str, debug=False):
         'boolean': SimpleType(None, 'boolean'),
     }
 
+
+def get_entity_mm(file_name: str, debug=False):
+    """
+    Get Entity Meta Model
+    """
     entity_mm = metamodel_from_file(
         join(this_folder, 'entity.tx'),
         classes=[SimpleType],

@@ -1,0 +1,17 @@
+export interface {{entity.name|capitalize}} {
+  {{entity.abbreviation}}_id: number;
+{% for property in entity.properties %}
+{%- if property is entity %}
+  {{entity.abbreviation}}_{{property.type.abbreviation}}_id{% if property.null %}?{% endif %}: number;
+{%else%}
+  {{entity.abbreviation}}_{{property.name}}{% if property.null %}?{% endif %}: {{property.type|type_data}};
+{% endif %}
+{% endfor %}
+  {{entity.abbreviation}}_is_valid: boolean | number;
+  {{entity.abbreviation}}_created_at: Date;
+  {{entity.abbreviation}}_updated_at: Date;
+  {{entity.abbreviation}}_deleted_at?: Date;
+  {{entity.abbreviation}}_creator_id: number;
+  {{entity.abbreviation}}_updater_id: number;
+  {{entity.abbreviation}}_deleter_id?: number;
+};
