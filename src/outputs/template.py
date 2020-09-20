@@ -7,11 +7,12 @@ from os.path import join
 from typing import Callable
 import jinja2
 
+# Handlers
+from src.outputs.handlers import handlers
 
 def generate_template_with_entity(
         entity_main: object,
-        verify_model: Callable,
-        type_data: Callable,
+        modules: dict,
         template_path: str,
         extension: str
 ) -> Callable:
@@ -24,8 +25,16 @@ def generate_template_with_entity(
             lstrip_blocks=True
         )
 
-        jinja_env.tests['entity'] = verify_model
-        jinja_env.filters['type_data'] = type_data
+        jinja_env.tests['entity'] = handlers.get('verify_model')(entity_main)
+        jinja_env.filters['type_data'] = handlers.get('type_data')(modules)
+
+        for name_filter, value_filter in handlers.get('filters').items():
+            jinja_env.tests[name_filter] = value_filter
+
+        for name_conversor, value_conversor in handlers.get(
+                'conversors'
+        ).items():
+            jinja_env.filters[name_conversor] = value_conversor
 
         template = jinja_env.get_template(template_def.get('file'))
 

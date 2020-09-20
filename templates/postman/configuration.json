@@ -1,0 +1,25 @@
+{
+  "name_plugin": "Postman Configuration",
+  "version": "0.0.1",
+  "description": "A Configuration for Postman",
+  "output_path": "postman",
+  "extension": "json",
+  "type_definition": {
+    "string": "test data",
+    "number": "1",
+    "datetime": "2020-09-20T17:27:15.457Z",
+    "time": "10:20:30",
+    "date": "2020-09-20",
+    "float": "20.1",
+    "boolean": "true"
+  },
+  "templates": [
+    {
+      "name": "postman",
+      "description": "for build the postman data",
+      "file": "postman.template",
+      "oneFile": true,
+      "fileOutput": "postmanDoc"
+    }
+  ]
+}

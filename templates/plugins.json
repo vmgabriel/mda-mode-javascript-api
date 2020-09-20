@@ -9,6 +9,11 @@
       "name": "mssql:sql",
       "path": "mssql",
       "file_configuration": "configuration.json"
+    },
+    {
+      "name": "postman:api",
+      "path": "postman",
+      "file_configuration": "configuration.json"
     }
   ]
 }

@@ -19,27 +19,6 @@ source_generate_path = os.path.join(
 )
 
 
-def verify_model(entity_model: object) -> Callable:
-    """Verify Data of Model"""
-
-    def is_entity(entity: object) -> bool:
-        """
-        Test to prove if some type is an entity
-        """
-        return entity.type in entity_model.entities
-    return is_entity
-
-
-def type_data(structure: dict) -> Callable:
-    """Type Data Model"""
-    def type_mode(_s: object) -> str:
-        """
-        Maps type names from PrimitiveType to entity
-        """
-        return structure.get(_s.name, _s.name)
-    return type_mode
-
-
 def read_template(template_path: str) -> Callable:
     """Read Template"""
 
@@ -124,10 +103,7 @@ def generate_code_plugin(entity: object, plugin: dict):
         print('Genering Code')
         generate_template(
             entity_main=entity,
-            verify_model=verify_model(entity),
-            type_data=type_data(
-                plugin.get('configuration_plugin').get('type_definition')
-            ),
+            modules=plugin.get('configuration_plugin').get('type_definition'),
             template_path=plugin.get('path_complete'),
             extension=plugin.get('configuration_plugin').get('extension')
         )(template)
