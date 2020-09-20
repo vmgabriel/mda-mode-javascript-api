@@ -29,17 +29,34 @@ def generate_template_with_entity(
 
         template = jinja_env.get_template(template_def.get('file'))
 
-        for entity in entity_main.entities:
-            with open(
-                    join(
-                        template_def.get('output_route'),
-                        '{}.{}'.format(
-                            entity.name.lower(),
-                            extension
-                        )
-                    ),
-                    'w'
-            ) as f:
-                f.write(template.render(entity=entity))
+        is_one_file = template_def.get('oneFile') if \
+            template_def.get('oneFile') else False
+
+        if is_one_file:
+            print('File Output - {}'.format(
+                template_def.get('output_file_route')
+            ))
+            file_output = template_def.get('output_file_route') \
+                if template_def.get('output_file_route') else join(
+                    template_def.get('output_route'),
+                    'file.{}'.format(
+                        extension
+                    )
+                )
+            with open(file_output, 'w') as _f:
+                _f.write(template.render(entities=entity_main.entities))
+        else:
+            for entity in entity_main.entities:
+                with open(
+                        join(
+                            template_def.get('output_route'),
+                            '{}.{}'.format(
+                                entity.name.lower(),
+                                extension
+                            )
+                        ),
+                        'w'
+                ) as _f:
+                    _f.write(template.render(entity=entity))
 
     return generate_with_template

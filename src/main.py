@@ -71,8 +71,20 @@ def read_template(template_path: str) -> Callable:
                     output_route,
                     template.get('output_path')
                 )
+            output_file = 'file'
+            if 'fileOutput' in template:
+                output_file = os.path.join(
+                    output_route,
+                    template.get(
+                        'fileOutput'
+                    ) if template.get('fileOutput') else ''
+                )
             template.update({
                 'output_route': output_route,
+                'output_file_route': '{}.{}'.format(
+                    output_file,
+                    module.get('configuration_plugin').get('extension')
+                )
             })
         return module
 

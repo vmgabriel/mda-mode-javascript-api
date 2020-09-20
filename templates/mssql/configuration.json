@@ -17,7 +17,9 @@
     {
       "name": "ddl",
       "description": "for build the ddl",
-      "file": "ddl.template"
+      "file": "ddl.template",
+      "oneFile": true,
+      "fileOutput": "ddl"
     }
   ]
 }

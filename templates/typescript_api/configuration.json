@@ -15,10 +15,22 @@
   },
   "templates": [
     {
-      "name": "interface",
-      "description": "for build the interface",
-      "file": "interface.template",
+      "name": "interface Robotec",
+      "description": "for build the interface Robotec",
+      "file": "interfaceRobotec.template",
       "output_path": "interfaces"
+    },
+    {
+      "name": "controller Robotec",
+      "description": "for build the controller Robotec",
+      "file": "controllerRobotec.template",
+      "output_path": "services"
+    },
+    {
+      "name": "routes Robotec",
+      "description": "for build the Routes Robotec",
+      "file": "routeRobotec.template",
+      "output_path": "routes"
     }
   ]
 }

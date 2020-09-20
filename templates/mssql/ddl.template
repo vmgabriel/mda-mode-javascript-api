@@ -1,12 +1,14 @@
-CREATE TABLE tbl_{{entity.abbreviation}} (
+{% for entity in entities %}
+CREATE TABLE Presidency_Data.tbl_{{entity.name|lower}} (
   {{entity.abbreviation}}_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 {% for property in entity.properties %}
 {%- if property is entity %}
-  {{entity.abbreviation}}_{{property.name}}_{{property.type.abbreviation}}_id INT {% if not property.null %}NOT{% endif %} NULL FOREIGN KEY REFERENCES tbl_{{property.type.abbreviation}}({{property.type.abbreviation}}_id),
+  {{entity.abbreviation}}_{{property.name}}_id INT {% if not property.null %}NOT{% endif %} NULL FOREIGN KEY REFERENCES Presidency_Data.tbl_{{property.type.name|lower}}({{property.type.abbreviation}}_id),
 {% else %}
   {{entity.abbreviation}}_{{property.name}} {{property.type|type_data}}{% if property.type|type_data == 'VARCHAR'  %}({{property.length}}){% endif %} {% if not property.null %}NOT{% endif %} NULL,
 {% endif %}
 {% endfor %}
+  {{entity.abbreviation}}_is_valid BIT NOT NULL DEFAULT 1,
   {{entity.abbreviation}}_created_at DATETIME NOT NULL DEFAULT GETDATE(),
   {{entity.abbreviation}}_updated_at DATETIME NOT NULL DEFAULT GETDATE(),
   {{entity.abbreviation}}_deleted_at DATETIME NULL,
@@ -17,3 +19,4 @@ CREATE TABLE tbl_{{entity.abbreviation}} (
 ;
 
 GO
+{% endfor %}
